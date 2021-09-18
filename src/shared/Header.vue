@@ -1,39 +1,45 @@
 <template>
-<div class="header">
+  <div class="header">
+    <div id="column1">
+      <a href="#">
+        <font-awesome-icon
+          class="logo icon-spacing"
+          :icon="['fas', 'film']"
+          transform="grow-6"
+          fixed-width/>
+      </a>
+    </div>
 
-  <div id="column1">
-     <a class="logo" href="#">
-      <font-awesome-icon class="oops" :icon="['fas', 'film']" transform="grow-6"  fixed-width /> 
-    </a>
-  </div>
+    <div id="column2">
+      <input class="search-field" type="text" placeholder="Search title.." />
+    </div>
 
-  <div id="column2">
-    <input class="search-field" type="text" placeholder="Search title.."/>
+    <div id="column3">
+      <ShoppingCart></ShoppingCart>
+      <Favorites></Favorites>
+    </div>
   </div>
-
-  <div id="column3">
-     <font-awesome-icon class="navicon oops" 
-    :icon="['fas', 'heart']" transform="grow-6"  fixed-width />
-      <font-awesome-icon class="navicon oops" 
-      :icon="['fas', 'shopping-cart']" transform="grow-6"  fixed-width />
-  </div>
- 
-</div>
 </template>
 
 <script>
+import ShoppingCart from "../components/ShoppingCart.vue";
+import Favorites from "../components/Favorites.vue";
+
 export default {
-  name: 'Header'
-}
+  name: "Header",
+  components: {
+    ShoppingCart,
+    Favorites,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .header {
   padding: 14px;
   background-color: #7fe4d5;
-  overflow:hidden;
+  overflow: hidden;
   display: flex;
 }
 
@@ -41,7 +47,8 @@ export default {
   flex-grow: 1;
 }
 
-#column1, #column3 {
+#column1,
+#column3 {
   width: 25%;
   display: inline-block;
 }
@@ -54,6 +61,7 @@ export default {
 .search-field {
   width: 100%;
 }
+
 .logo {
   float: left;
 }
@@ -62,7 +70,7 @@ export default {
   float: right;
 }
 
-.oops {
+.icon-spacing {
   margin: 0 8px 0 8px;
 }
 </style>
