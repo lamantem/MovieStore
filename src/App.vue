@@ -19,6 +19,7 @@ export default {
 </script>
 
 <style>
+ @import '~bootstrap-vue/dist/bootstrap-vue.min.css';
 body {
   margin: 0;
 }
