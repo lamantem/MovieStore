@@ -1,16 +1,13 @@
 <template>
   <div>
-    <Header></Header>
   <h1>Welcome</h1>
   </div>
 </template>
 
 <script>
-import Header from '../shared/Header.vue'
 export default {
   name: 'Home',
   components: {
-    Header
   }
 }
 </script>
