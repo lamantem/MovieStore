@@ -10,8 +10,11 @@ import IconsPlugin from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import axios from './shared/axios'
+
 Vue.use(VueBootstrap)
 Vue.use(IconsPlugin)
+Vue.prototype.$http = axios
 
 library.add(fas);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
