@@ -56,12 +56,12 @@ export default {
     };
   },
   props: {
-    search: String,
+    search: String
   },
   components: {},
   beforeMount() {
     this.loadMovies();
-    this.search = "";
+    this.search= '';
   },
   computed: {
     filteredList() {

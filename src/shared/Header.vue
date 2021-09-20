@@ -45,6 +45,10 @@ export default {
     favorites: Array,
     shoppingCart: Array,
   },
+  beforeMount() {
+    this.search= 'a';
+    this.search= '';
+  },
   components: {
     ShoppingCart,
     Favorites,
