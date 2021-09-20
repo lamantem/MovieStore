@@ -120,8 +120,9 @@ export default {
 }
 
 .poster-images {
-  width: 346px !important;
-  height: 519px !important;
+  width: 100%;
+  max-width: 340 !important;
+  max-height: 510px !important;
 }
 
 .cards-item {
