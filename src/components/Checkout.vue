@@ -24,8 +24,9 @@
       </div>
 
       <div class="col2">
-        <li v-for="item in itemsCheckout" :key="item.message">
-          {{ item.message }}
+        <li v-for="item in shoppingCartList" :key="item.message">
+          {{ item.title }}
+          R${{ item.cost }}
         </li>
         <button id="finish">Finalizar</button>
       </div>
@@ -40,6 +41,9 @@ export default {
     return {
       itemsCheckout: [{ message: "ooooo" }, { message: "zaaaaa" }],
     };
+  },
+  props: {
+    shoppingCartList: Array
   },
   components: {},
 };

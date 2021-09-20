@@ -10,7 +10,10 @@
       @clearFavoritesList="clearFavoritesList"
     >
     </Header>
-    <Checkout v-if="toggleCheckout"></Checkout>
+    <Checkout
+      :shoppingCartList="this.shoppingCart"
+      v-if="toggleCheckout"
+    ></Checkout>
     <Home
       v-if="!toggleCheckout"
       :search="this.search"

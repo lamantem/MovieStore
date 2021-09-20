@@ -25,7 +25,7 @@
           {{ item.poster_path }}
           R${{ item.cost }}
         </li>
-        <b-button class="checkout-button" @click="$emit('toggleCheckout')">Finalizar Compra</b-button>
+        <b-button class="checkout-button" @click="toggleChecksdso()">Finalizar Compra</b-button>
       </div>
     </b-sidebar>
   </div>
@@ -38,7 +38,11 @@ export default {
     shoppingCartList: Array,
   },
   components: {},
-  methods: {},
+  methods: { 
+    toggleChecksdso() {
+      this.$emit('toggleCheckout', this.shoppingCartList);
+    }
+  },
 };
 </script>
 

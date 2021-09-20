@@ -33,7 +33,7 @@
       ></Favorites>
       <ShoppingCart
         :shoppingCartList="this.shoppingCart"
-        @toggleCheckout="$emit('toggleCheckout')"
+        @toggleCheckout="toggleChecksdso"
         @clearCheckoutList="$emit('clearCheckoutList')"
       ></ShoppingCart>
     </div>
@@ -69,6 +69,9 @@ export default {
     searching() {
       this.$emit("searchingMovies", this.search);
     },
+       toggleChecksdso() {
+      this.$emit('toggleCheckout', this.shoppingCart);
+    }
   },
 };
 </script>
