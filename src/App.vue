@@ -4,10 +4,15 @@
       :shoppingCart="this.shoppingCart"
       :favorites="this.favorites"
       @searchingMovies="searching()"
+      @toggleCheckout="toggleCheckoutView"
     >
     </Header>
-    <!-- <Checkout></Checkout> -->
+    <Checkout
+      v-if="toggleCheckout"
+      @toggleCheckout="toggleCheckoutView"
+    ></Checkout>
     <Home
+      v-if="!toggleCheckout"
       :search="this.search"
       @addToShoppingCart="addToShoppingCart"
       @addToFavorite="addToFavorites"
@@ -18,7 +23,7 @@
 
 <script>
 import Home from "./components/Home.vue";
-// import Checkout from "./components/Checkout.vue";
+import Checkout from "./components/Checkout.vue";
 import Header from "./shared/Header.vue";
 
 export default {
@@ -28,12 +33,13 @@ export default {
       shoppingCart: Array,
       favorites: Array,
       search: String,
+      toggleCheckout: Boolean,
     };
   },
   components: {
     Home,
     Header,
-    // Checkout
+    Checkout,
   },
   beforeMount() {
     this.shoppingCart = [];
@@ -49,6 +55,9 @@ export default {
     searching() {
       this.search = event.target.value;
     },
+    toggleCheckoutView() {
+      this.toggleCheckout = !this.toggleCheckout;
+    }
   },
 };
 </script>

@@ -22,6 +22,7 @@
           {{ item.poster_path }}
           R${{ item.cost }}
         </li>
+        <b-button @click="$emit('toggleCheckout')">AAAAAAAAAA</b-button>
       </div>
     </b-sidebar>
   </div>

@@ -23,7 +23,8 @@
 
     <div id="column3">
       <Favorites :favoritesList="this.favorites"></Favorites>
-      <ShoppingCart :shoppingCartList="this.shoppingCart"></ShoppingCart>
+      <ShoppingCart :shoppingCartList="this.shoppingCart"
+       @toggleCheckout="$emit('toggleCheckout')"></ShoppingCart>
     </div>
   </div>
 </template>
