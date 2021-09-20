@@ -30,6 +30,7 @@
     <div id="column3">
       <Favorites
         @clearFavoritesList="$emit('clearFavoritesList')"
+        @addToShoppingFromFavorite="addToShoppingFromFavorite"
         :favoritesList="this.favorites"
       ></Favorites>
       <ShoppingCart
@@ -73,6 +74,9 @@ export default {
     toggleChecksdso() {
       this.$emit("toggleCheckout", this.shoppingCart);
     },
+    addToShoppingFromFavorite(item){
+      this.$emit("addToShoppingFromFavorite", item);
+    }
   },
 };
 </script>

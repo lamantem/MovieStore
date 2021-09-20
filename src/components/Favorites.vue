@@ -29,12 +29,14 @@
           />
           <span class="movie-title">`{{ TextAbstract(item.title, 11) }}</span>
           <span>R${{ item.cost }}</span>
-          <font-awesome-icon
-            class="navicon icon-spacing sidebar-action-icon"
-            :icon="['fas', 'shopping-cart']"
-            transform="grow-2"
-            fixed-width
-          />
+          <b-button @click="$emit('addToShoppingFromFavorite', item);" id="fav-button">
+            <font-awesome-icon
+              class="fav-icon"
+              :icon="['fas', 'shopping-cart']"
+              transform="grow-2"
+              fixed-width
+            />
+          </b-button>
           <font-awesome-icon
             class="navicon icon-spacing sidebar-action-icon"
             :icon="['fas', 'trash']"

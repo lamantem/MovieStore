@@ -8,6 +8,7 @@
       @backHome="backHome"
       @clearCheckoutList="clearCheckoutList"
       @clearFavoritesList="clearFavoritesList"
+      @addToShoppingFromFavorite="addToShoppingCart"
     >
     </Header>
     <Checkout
