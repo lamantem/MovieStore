@@ -25,10 +25,13 @@
 
       <div class="col2">
         <li v-for="item in shoppingCartList" :key="item.message">
+          <img
+            class="poster-images"
+            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
+          />
           {{ item.title }}
           R${{ item.cost }}
         </li>
-        <button id="finish">Finalizar</button>
       </div>
     </div>
   </div>
@@ -43,7 +46,7 @@ export default {
     };
   },
   props: {
-    shoppingCartList: Array
+    shoppingCartList: Array,
   },
   components: {},
 };
@@ -59,6 +62,18 @@ export default {
 
 #title {
   padding: 16px 0 0 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+  text-align: left;
+}
+
+.poster-images {
+  width: 100%;
+  max-width: 44px !important;
+  max-height: 66px !important;
 }
 
 .inner {

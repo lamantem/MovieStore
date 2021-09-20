@@ -16,14 +16,31 @@
       shadow
     >
       <div class="px-3 py-2">
-           <div class="title-button">
+        <div class="title-button">
           <p>Meus Favoritos</p>
-          <b-button @click="$emit('clearFavoritesList')" class="clear-button">Esvaziar</b-button>
+          <b-button @click="$emit('clearFavoritesList')" class="clear-button"
+            >Esvaziar</b-button
+          >
         </div>
         <li v-for="item in favoritesList" :key="item.message">
-          {{ item.title }}
-          {{ item.poster_path }}
-          R${{ item.cost }}
+          <img
+            class="poster-images"
+            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
+          />
+          <span class="movie-title">`{{ TextAbstract(item.title, 11) }}</span>
+          <span>R${{ item.cost }}</span>
+          <font-awesome-icon
+            class="navicon icon-spacing sidebar-action-icon"
+            :icon="['fas', 'shopping-cart']"
+            transform="grow-2"
+            fixed-width
+          />
+          <font-awesome-icon
+            class="navicon icon-spacing sidebar-action-icon"
+            :icon="['fas', 'trash']"
+            transform="grow-2"
+            fixed-width
+          />
         </li>
       </div>
     </b-sidebar>
@@ -37,6 +54,21 @@ export default {
     favoritesList: Array,
   },
   components: {},
+  methods: {
+    TextAbstract(text, length) {
+      let last;
+      if (text == null) {
+        return "";
+      }
+      if (text.length <= length) {
+        return text;
+      }
+      text = text.substring(0, length);
+      last = text.lastIndexOf(" ");
+      text = text.substring(0, last);
+      return text + "...";
+    },
+  },
 };
 </script>
 
@@ -65,6 +97,22 @@ button {
   display: flex;
   justify-content: center;
   align-items: baseline;
+}
+
+ul,
+li {
+  list-style-type: none;
+  text-align: left;
+}
+
+span {
+  margin-left: 8px;
+}
+
+.poster-images {
+  width: 100%;
+  max-width: 44px !important;
+  max-height: 66px !important;
 }
 
 .clear-button {
