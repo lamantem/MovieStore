@@ -22,9 +22,15 @@
     </div>
 
     <div id="column3">
-      <Favorites :favoritesList="this.favorites"></Favorites>
-      <ShoppingCart :shoppingCartList="this.shoppingCart"
-       @toggleCheckout="$emit('toggleCheckout')"></ShoppingCart>
+      <Favorites
+        @clearFavoritesList="$emit('clearFavoritesList')"
+        :favoritesList="this.favorites"
+      ></Favorites>
+      <ShoppingCart
+        :shoppingCartList="this.shoppingCart"
+        @toggleCheckout="$emit('toggleCheckout')"
+        @clearCheckoutList="$emit('clearCheckoutList')"
+      ></ShoppingCart>
     </div>
   </div>
 </template>
@@ -47,8 +53,8 @@ export default {
     shoppingCart: Array,
   },
   beforeMount() {
-    this.search= 'a';
-    this.search= '';
+    this.search = "a";
+    this.search = "";
   },
   components: {
     ShoppingCart,

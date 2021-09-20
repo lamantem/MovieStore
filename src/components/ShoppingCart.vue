@@ -16,13 +16,16 @@
       shadow
     >
       <div class="px-3 py-2">
-        <p>Meu Carrinho</p>
+        <div class="title-button">
+          <p>Meu Carrinho</p>
+          <b-button @click="$emit('clearCheckoutList')" class="clear-button">Esvaziar</b-button>
+        </div>
         <li v-for="item in shoppingCartList" :key="item.message">
           {{ item.title }}
           {{ item.poster_path }}
           R${{ item.cost }}
         </li>
-        <b-button @click="$emit('toggleCheckout')">AAAAAAAAAA</b-button>
+        <b-button class="checkout-button" @click="$emit('toggleCheckout')">Finalizar Compra</b-button>
       </div>
     </b-sidebar>
   </div>
@@ -52,10 +55,28 @@ button {
 
 #sidebar-1 {
   margin-top: 64px;
-  height: 100%;
+  height: auto;
 }
 
 .icon-spacing {
   margin: 0 4px 0 0;
+}
+
+.title-button {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.clear-button {
+  margin-left: 30px;
+  border-bottom: 5px solid #5352ed;
+  background-color: #f1f2f6;
+  color: #5352ed;
+  border-radius: 0;
+}
+
+.checkout-button{
+  margin: 12px 0 0 0;
 }
 </style>

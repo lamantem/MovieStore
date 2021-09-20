@@ -6,11 +6,11 @@
       @searchingMovies="searching()"
       @toggleCheckout="checkoutView"
       @backHome="backHome"
+      @clearCheckoutList="clearCheckoutList"
+      @clearFavoritesList="clearFavoritesList"
     >
     </Header>
-    <Checkout
-      v-if="toggleCheckout"
-    ></Checkout>
+    <Checkout v-if="toggleCheckout"></Checkout>
     <Home
       v-if="!toggleCheckout"
       :search="this.search"
@@ -62,7 +62,13 @@ export default {
     },
     backHome() {
       this.toggleCheckout = false;
-    }
+    },
+    clearCheckoutList() {
+      this.shoppingCart = [];
+    },
+    clearFavoritesList() {
+      this.favorites = [];
+    },
   },
 };
 </script>
@@ -106,5 +112,9 @@ body {
   box-shadow: none !important;
   background-color: #1e3799 !important;
   outline: 0;
+}
+
+.b-sidebar-body {
+  background-color: #f1f2f6;
 }
 </style>

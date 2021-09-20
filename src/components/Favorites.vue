@@ -16,7 +16,10 @@
       shadow
     >
       <div class="px-3 py-2">
-        <p>Meus Favoritos</p>
+           <div class="title-button">
+          <p>Meus Favoritos</p>
+          <b-button @click="$emit('clearFavoritesList')" class="clear-button">Esvaziar</b-button>
+        </div>
         <li v-for="item in favoritesList" :key="item.message">
           {{ item.title }}
           {{ item.poster_path }}
@@ -56,5 +59,19 @@ button {
 
 .icon-spacing {
   margin: 0 0 0 4px;
+}
+
+.title-button {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.clear-button {
+  margin-left: 30px;
+  border-bottom: 5px solid #5352ed;
+  background-color: #f1f2f6;
+  color: #5352ed;
+  border-radius: 0;
 }
 </style>
