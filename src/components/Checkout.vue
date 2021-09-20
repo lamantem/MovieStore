@@ -47,6 +47,14 @@
 
       <div class="col1"></div>
       <div class="col2">
+        <li id="total-cost">
+          <span class="image-header"> </span>
+          <span class="cost-header">
+            <h4>R$ {{ this.sumOfCosts() }}</h4></span
+          >
+          <span class="quantity-header"></span>
+          <span class="title-header"> Total:</span>
+        </li>
         <div>
           <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')"
             >Open Modal</b-button
@@ -72,13 +80,16 @@ export default {
   name: "Checkout",
   data() {
     return {
-      itemsCheckout: [{ message: "ooooo" }, { message: "zaaaaa" }],
+      totalCost: Float32Array,
     };
   },
   props: {
     shoppingCartList: Array,
   },
   components: {},
+  beforeMount() {
+    this.totalCost = 0;
+  },
   methods: {
     TextAbstract(text, length) {
       let last;
@@ -96,6 +107,17 @@ export default {
     backToStore() {
       this.$root.$bvModal.hide("bv-modal-example");
       this.$emit("backHome");
+    },
+    sumOfCosts() {
+      this.totalCost = 0;
+      if (this.shoppingCartList.length < 1) {
+        return 0;
+      }
+      for (let i = 0; i < this.shoppingCartList.length; i++) {
+        this.totalCost += this.shoppingCartList[i].cost;
+        console.log(i);
+      }
+      return this.totalCost;
     },
   },
 };
@@ -122,6 +144,10 @@ li {
 
 li {
   border-bottom: 1px solid black;
+}
+
+#total-cost {
+  border-bottom: 0;
 }
 
 .quantity {
@@ -167,7 +193,7 @@ li {
 
 .col1,
 .col2 {
-  flex: 1 1 350px;
+  flex: 1 1 800px;
   width: 50%;
   float: left;
 }
