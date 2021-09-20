@@ -12,6 +12,7 @@
     </Header>
     <Checkout
       :shoppingCartList="this.shoppingCart"
+      @backHome="backHome"
       v-if="toggleCheckout"
     ></Checkout>
     <Home

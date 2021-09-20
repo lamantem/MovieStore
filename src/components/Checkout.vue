@@ -1,8 +1,9 @@
 <template>
   <div class="outer">
     <div class="inner">
+      <div class="col1"><h1 id="title">Finalizar Compra</h1></div>
+      <div class="col2"></div>
       <div class="col1">
-        <h1 id="title">Finalizar Compra</h1>
         <input
           class="input large-input"
           type="text"
@@ -43,7 +44,25 @@
           </li>
         </ul>
       </div>
-      <button></button>
+
+      <div class="col1"></div>
+      <div class="col2">
+        <div>
+          <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')"
+            >Open Modal</b-button
+          >
+
+          <b-modal id="bv-modal-example" hide-footer>
+            <template #modal-title> Obrigado Maito Gai! </template>
+            <div class="d-block text-center">
+              <h3>Sua compra foi realizada com sucesso!</h3>
+            </div>
+            <b-button class="mt-3" block @click="backToStore()"
+              >Ir para a loja
+            </b-button>
+          </b-modal>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -73,6 +92,10 @@ export default {
       last = text.lastIndexOf(" ");
       text = text.substring(0, last);
       return text + "...";
+    },
+    backToStore() {
+      this.$root.$bvModal.hide("bv-modal-example");
+      this.$emit("backHome");
     },
   },
 };

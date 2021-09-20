@@ -69,9 +69,9 @@ export default {
     searching() {
       this.$emit("searchingMovies", this.search);
     },
-       toggleChecksdso() {
-      this.$emit('toggleCheckout', this.shoppingCart);
-    }
+    toggleChecksdso() {
+      this.$emit("toggleCheckout", this.shoppingCart);
+    },
   },
 };
 </script>
