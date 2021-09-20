@@ -16,7 +16,7 @@
             style="width: 100%"
           />
         </div>
-        <h4 class="small-letters">{{ item.release_date }}</h4>
+        <h4 class="small-letters">{{ formatDate(item.release_date) }}</h4>
         <div>
           <h4 class="big-letters">
             <b>{{ item.title }}</b>
@@ -56,12 +56,12 @@ export default {
     };
   },
   props: {
-    search: String
+    search: String,
   },
   components: {},
   beforeMount() {
     this.loadMovies();
-    this.search= '';
+    this.search = "";
   },
   computed: {
     filteredList() {
@@ -98,6 +98,14 @@ export default {
         poster_path: item.poster_path,
       };
       this.$emit("addToFavorite", this.transferVariable);
+    },
+    formatDate(input) {
+      var datePart = input.match(/\d+/g),
+        year = datePart[0].substring(2), // get only two digits
+        month = datePart[1],
+        day = datePart[2];
+
+      return day + "/" + month + "/" + year;
     },
   },
 };
