@@ -1,22 +1,29 @@
 <template>
   <div class="header">
     <div id="column1">
-      <a href="#">
+      <b-button>
         <font-awesome-icon
           class="logo icon-spacing"
           :icon="['fas', 'film']"
-          transform="grow-6"
-          fixed-width/>
-      </a>
+          transform="grow-36"
+          fixed-width
+        />
+      </b-button>
     </div>
 
     <div id="column2">
-      <input class="search-field" type="text" placeholder="Search title.." />
+      <input
+        v-on:input="searching()"
+        class="search-field"
+        v-model="search"
+        type="text"
+        placeholder="Pesquisar..."
+      />
     </div>
 
     <div id="column3">
+      <Favorites :favoritesList="this.favorites"></Favorites>
       <ShoppingCart></ShoppingCart>
-      <Favorites></Favorites>
     </div>
   </div>
 </template>
@@ -27,9 +34,24 @@ import Favorites from "../components/Favorites.vue";
 
 export default {
   name: "Header",
+  data() {
+    return {
+      favSidebarIsOpen: false,
+      shopSidebarIsOpen: false,
+      search: "",
+    };
+  },
+  props: {
+    favorites: Object
+  },
   components: {
     ShoppingCart,
     Favorites,
+  },
+  methods: {
+    searching() {
+      this.$emit("searchingMovies", this.search);
+    },
   },
 };
 </script>
@@ -38,7 +60,7 @@ export default {
 <style scoped>
 .header {
   padding: 14px;
-  background-color: #7fe4d5;
+  background-color: #1e3799;
   overflow: hidden;
   display: flex;
 }
@@ -49,16 +71,21 @@ export default {
 
 #column1,
 #column3 {
-  width: 25%;
+  width: 30%;
   display: inline-block;
 }
 
 #column2 {
-  width: 50%;
+  width: 40%;
   display: inline-block;
 }
 
+#column3 {
+  display: inline-flex;
+}
+
 .search-field {
+  border-radius: 5px;
   width: 100%;
 }
 
@@ -70,7 +97,8 @@ export default {
   float: right;
 }
 
-.icon-spacing {
-  margin: 0 8px 0 8px;
+button {
+  background-color: #1e3799;
+  border: 0;
 }
 </style>

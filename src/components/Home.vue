@@ -1,11 +1,21 @@
 <template>
   <ul class="cards">
-    <li v-for="item in filmDataSource" :key="item.id" class="cards-item">
+    <li v-for="item in filteredList" :key="item.id" class="cards-item">
       <div class="card">
-        <img
-          :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
-          style="width: 100%"
-        />
+        <div>
+          <b-button @click="addToFavorites(item)" id="fav-button">
+            <font-awesome-icon
+              class="fav-icon"
+              :icon="['fas', 'heart']"
+              transform="grow-6"
+              fixed-width
+            />
+          </b-button>
+          <img
+            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
+            style="width: 100%"
+          />
+        </div>
         <h4 class="small-letters">{{ item.release_date }}</h4>
         <div>
           <h4 class="big-letters">
@@ -13,12 +23,18 @@
           </h4>
           <div class="rating-genre">
             <h4 class="small-letters">
-              <b>{{ item.vote_average }}</b>
+              <b
+                ><font-awesome-icon
+                  class="navicon"
+                  :icon="['fas', 'star']"
+                  fixed-width
+                />{{ item.vote_average }}</b
+              >
             </h4>
-            <h4 class="small-letters">\\\\Genero\\\\</h4>
+            <h4 class="small-letters">Genero</h4>
           </div>
-          <h4 class="small-letters">R$42210,00</h4>
-          <b-btn @click="addToShoppingCart(item)">test</b-btn>
+          <h4 class="small-letters">R$ {{ cost }}</h4>
+          <b-btn class="button">Adicionar</b-btn>
         </div>
       </div>
     </li>
@@ -32,13 +48,25 @@ export default {
   name: "Home",
   data() {
     return {
-      filmDataSource: [],
+      movieDataSource: [],
+      cost: 120.32,
+      transferVariable: []
     };
+  },
+  props: {
+    search: String,
   },
   components: {},
   beforeMount() {
     this.loadMovies();
-    this.loadImages();
+    this.search = "";
+  },
+  computed: {
+    filteredList() {
+      return this.movieDataSource.filter((movie) => {
+        return movie.title.toLowerCase().includes(this.search.toLowerCase());
+      });
+    },
   },
   methods: {
     loadMovies() {
@@ -47,28 +75,19 @@ export default {
           "http://api.themoviedb.org/3/discover/movie?api_key=77853655fb4cb264407715947ab783cc"
         )
         .then((res) => {
-          this.filmDataSource = res.data.results;
-          console.log(res.data);
-          // console.log(this.filmDataSource);
+          this.movieDataSource = res.data.results;
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    decodeImage() {
-      return axios
-        .get("http://image.tmdb.org/t/p/w500/lSEr1nphZuCqXli3VziIgCI8Ivf.jpg", {
-          responseType: "arraybuffer",
-        })
-        .then((response) =>
-          new Buffer(response.data, "binary").toString("base64")
-        );
-    },
     addToShoppingCart(item) {
-      this.$emit("addToShoppingCart", item);
+      this.$emit("addToShoppingCart", item.title);
     },
-    addToFavorite(item) {
-      this.$emit("addToFavorite", item);
+    addToFavorites(item) {
+      this.transferVariable = {'title': item.title,
+                               'cost': this.cost};
+      this.$emit("addToFavorite", this.transferVariable);
     },
   },
 };
@@ -88,7 +107,7 @@ export default {
 .cards-item {
   display: flex;
   padding: 1rem;
-  width: 350px;
+  width: 400px;
 }
 
 .card {
@@ -100,16 +119,56 @@ export default {
   overflow: hidden;
 }
 
+.fav-icon {
+  color: #f6b93b;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+#fav-button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: none;
+  height: 25px;
+  width: 30px;
+}
+
 .big-letters {
   font-size: 16px;
 }
 
 .small-letters {
   font-size: 12px;
+  margin: 0 2px;
+}
+
+.navicon {
+  color: #f6b93b;
 }
 
 .rating-genre {
   display: flex;
   justify-content: center;
+}
+
+.button {
+  width: 100%;
+  background-color: #78e08f;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus:not(:disabled):not(.disabled),
+.btn-secondary,
+.btn:focus,
+.btn:active,
+.btn:hover {
+  box-shadow: none !important;
+  border: 0 !important;
+  background-color: #78e08f;
+  outline: 0;
 }
 </style>
