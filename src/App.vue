@@ -25,8 +25,8 @@ export default {
   name: "App",
   data() {
     return {
-      shoppingCart: Object,
-      favorites: Object,
+      shoppingCart: Array,
+      favorites: Array,
       search: String,
     };
   },
@@ -36,7 +36,7 @@ export default {
     // Checkout
   },
   beforeMount() {
-    this.shoppingCart = {};
+    this.shoppingCart = [];
     this.favorites = [];
   },
   methods: {

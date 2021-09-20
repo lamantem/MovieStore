@@ -34,7 +34,9 @@
             <h4 class="small-letters">Genero</h4>
           </div>
           <h4 class="small-letters">R$ {{ cost }}</h4>
-          <b-btn class="button">Adicionar</b-btn>
+          <b-btn @click="addToShoppingCart(item)" class="button"
+            >Adicionar</b-btn
+          >
         </div>
       </div>
     </li>
@@ -50,7 +52,7 @@ export default {
     return {
       movieDataSource: [],
       cost: 120.32,
-      transferVariable: []
+      transferVariable: [],
     };
   },
   props: {
@@ -82,11 +84,19 @@ export default {
         });
     },
     addToShoppingCart(item) {
-      this.$emit("addToShoppingCart", item.title);
+      this.transferVariable = {
+        title: item.title,
+        cost: this.cost,
+        poster_path: item.poster_path,
+      };
+      this.$emit("addToShoppingCart", this.transferVariable);
     },
     addToFavorites(item) {
-      this.transferVariable = {'title': item.title,
-                               'cost': this.cost};
+      this.transferVariable = {
+        title: item.title,
+        cost: this.cost,
+        poster_path: item.poster_path,
+      };
       this.$emit("addToFavorite", this.transferVariable);
     },
   },
@@ -99,8 +109,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  padding: 75px 0 0 0;
   place-content: center;
 }
 

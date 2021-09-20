@@ -1,15 +1,27 @@
 <template>
-  <div>
-    <b-button v-b-toggle.sidebar-1>
+  <div class="content">
+    <b-button class="shadow-none" v-b-toggle.sidebar1-no-header>
       <font-awesome-icon
         class="navicon icon-spacing"
-        :icon="['fas', 'heart']"
+        :icon="['fas', 'shopping-cart']"
         transform="grow-6"
-        fixed-width/>
+        fixed-width
+      />
     </b-button>
-    <b-sidebar id="sidebar-1" title="Favoritos" shadow>
+    <b-sidebar
+      id="sidebar1-no-header"
+      title="Meu Carrinho"
+      right
+      no-header
+      shadow
+    >
       <div class="px-3 py-2">
-        <p>Favoritos</p>
+        <p>Meu Carrinho</p>
+        <li v-for="item in shoppingCartList" :key="item.message">
+          {{ item.title }}
+          {{ item.poster_path }}
+          R${{ item.cost }}
+        </li>
       </div>
     </b-sidebar>
   </div>
@@ -18,10 +30,31 @@
 <script>
 export default {
   name: "ShoppingCart",
+  props: {
+    shoppingCartList: Array,
+  },
   components: {},
+  methods: {},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.content {
+  order: 2;
+}
+
+button {
+  background-color: #1e3799;
+  border: 0;
+}
+
+#sidebar-1 {
+  margin-top: 64px;
+  height: 100%;
+}
+
+.icon-spacing {
+  margin: 0 4px 0 0;
+}
 </style>

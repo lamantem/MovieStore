@@ -23,7 +23,7 @@
 
     <div id="column3">
       <Favorites :favoritesList="this.favorites"></Favorites>
-      <ShoppingCart></ShoppingCart>
+      <ShoppingCart :shoppingCartList="this.shoppingCart"></ShoppingCart>
     </div>
   </div>
 </template>
@@ -42,7 +42,8 @@ export default {
     };
   },
   props: {
-    favorites: Array
+    favorites: Array,
+    shoppingCart: Array,
   },
   components: {
     ShoppingCart,
@@ -63,6 +64,9 @@ export default {
   background-color: #1e3799;
   overflow: hidden;
   display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 200;
 }
 
 .header > div {
