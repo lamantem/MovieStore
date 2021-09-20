@@ -24,14 +24,13 @@
       </div>
 
       <div class="col2">
-       
         <ul>
-           <li>
-          <span class="image-header"> Imagem</span>
-          <span class="cost-header"> Preço</span>
-          <span class="quantity-header">Qtd</span>
-          <span class="title-header">Nome</span>
-        </li>
+          <li>
+            <span class="image-header"> Imagem</span>
+            <span class="cost-header"> Preço</span>
+            <span class="quantity-header">Qtd</span>
+            <span class="title-header">Nome</span>
+          </li>
           <li v-for="item in shoppingCartList" :key="item.message">
             <span>
               <img
@@ -44,6 +43,7 @@
           </li>
         </ul>
       </div>
+      <button></button>
     </div>
   </div>
 </template>
@@ -92,8 +92,13 @@ export default {
 ul,
 li {
   list-style-type: none;
+  padding: 4px 8px 4px 4px;
   text-align: left;
   width: 100%;
+}
+
+li {
+  border-bottom: 1px solid black;
 }
 
 .quantity {
