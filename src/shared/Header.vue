@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div id="column1">
-      <b-button>
+      <b-button @click="$emit('backHome')">
         <font-awesome-icon
           class="logo icon-spacing"
           :icon="['fas', 'film']"

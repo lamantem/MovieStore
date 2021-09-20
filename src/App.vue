@@ -5,6 +5,7 @@
       :favorites="this.favorites"
       @searchingMovies="searching()"
       @toggleCheckout="toggleCheckoutView"
+      @backHome="backHome"
     >
     </Header>
     <Checkout
@@ -44,6 +45,8 @@ export default {
   beforeMount() {
     this.shoppingCart = [];
     this.favorites = [];
+    this.favorites = [];
+    this.toggleCheckout = false;
   },
   methods: {
     addToShoppingCart(item) {
@@ -57,6 +60,9 @@ export default {
     },
     toggleCheckoutView() {
       this.toggleCheckout = !this.toggleCheckout;
+    },
+    backHome() {
+      this.toggleCheckout = false;
     }
   },
 };
