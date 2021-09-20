@@ -17,6 +17,7 @@
         class="search-field"
         v-model="search"
         type="text"
+        placeholder="Pesquisar..."
       />
       <font-awesome-icon
         class="logo icon-spacing search-icon"

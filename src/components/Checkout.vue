@@ -57,7 +57,7 @@
         </li>
         <div>
           <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')"
-            >Open Modal</b-button
+            >Finalizar</b-button
           >
 
           <b-modal id="bv-modal-example" hide-footer>
@@ -65,7 +65,7 @@
             <div class="d-block text-center">
               <h3>Sua compra foi realizada com sucesso!</h3>
             </div>
-            <b-button class="mt-3" block @click="backToStore()"
+            <b-button class="mt-3" block @click="finishPurchase()"
               >Ir para a loja
             </b-button>
           </b-modal>
@@ -104,9 +104,9 @@ export default {
       text = text.substring(0, last);
       return text + "...";
     },
-    backToStore() {
+    finishPurchase() {
       this.$root.$bvModal.hide("bv-modal-example");
-      this.$emit("backHome");
+      this.$emit("finishPurchase");
     },
     sumOfCosts() {
       this.totalCost = 0;
@@ -115,7 +115,6 @@ export default {
       }
       for (let i = 0; i < this.shoppingCartList.length; i++) {
         this.totalCost += this.shoppingCartList[i].cost;
-        console.log(i);
       }
       return this.totalCost;
     },
@@ -148,6 +147,10 @@ li {
 
 #total-cost {
   border-bottom: 0;
+}
+
+#show-btn {
+  margin: 0;
 }
 
 .quantity {

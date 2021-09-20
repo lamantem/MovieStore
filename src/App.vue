@@ -12,7 +12,7 @@
     </Header>
     <Checkout
       :shoppingCartList="this.shoppingCart"
-      @backHome="backHome"
+      @finishPurchase="finishPurchase"
       v-if="toggleCheckout"
     ></Checkout>
     <Home
@@ -66,6 +66,10 @@ export default {
     },
     backHome() {
       this.toggleCheckout = false;
+    },
+    finishPurchase() {
+      this.toggleCheckout = false;
+      this.clearCheckoutList();
     },
     clearCheckoutList() {
       this.shoppingCart = [];
