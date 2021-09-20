@@ -134,4 +134,16 @@ span {
 .checkout-button {
   margin: 12px 0 0 0;
 }
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus:not(:disabled):not(.disabled),
+.btn:focus,
+.btn:active,
+.btn:hover {
+  box-shadow: none !important;
+  background-color: #57606f !important;
+  outline: 0;
+}
 </style>

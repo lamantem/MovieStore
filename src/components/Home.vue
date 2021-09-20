@@ -11,8 +11,10 @@
               fixed-width
             />
           </b-button>
-          <img class="poster-images"
-            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"/>
+          <img
+            class="poster-images"
+            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
+          />
         </div>
         <h4 class="small-letters">{{ formatDate(item.release_date) }}</h4>
         <div>
@@ -111,6 +113,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h4 {
+  margin: 0;
+}
 .cards {
   display: flex;
   flex-wrap: wrap;

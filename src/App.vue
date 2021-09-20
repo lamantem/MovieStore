@@ -119,7 +119,7 @@ body {
 .btn:active,
 .btn:hover {
   box-shadow: none !important;
-  background-color: #1e3799 !important;
+  background-color: #57606f !important;
   outline: 0;
 }
 

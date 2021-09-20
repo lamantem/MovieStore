@@ -29,7 +29,10 @@
           />
           <span class="movie-title">`{{ TextAbstract(item.title, 11) }}</span>
           <span>R${{ item.cost }}</span>
-          <b-button @click="$emit('addToShoppingFromFavorite', item);" id="fav-button">
+          <b-button
+            @click="$emit('addToShoppingFromFavorite', item)"
+            id="shopping-button"
+          >
             <font-awesome-icon
               class="fav-icon"
               :icon="['fas', 'shopping-cart']"
@@ -123,5 +126,23 @@ span {
   background-color: #f1f2f6;
   color: #5352ed;
   border-radius: 0;
+}
+
+#shopping-button {
+  margin-left: 5px;
+  background-color: #f1f2f6;
+  color: #212529;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus:not(:disabled):not(.disabled),
+.btn:focus,
+.btn:active,
+.btn:hover {
+  box-shadow: none !important;
+  background-color: #57606f !important;
+  outline: 0;
 }
 </style>
