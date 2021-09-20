@@ -11,10 +11,8 @@
               fixed-width
             />
           </b-button>
-          <img
-            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
-            style="width: 100%"
-          />
+          <img class="poster-images"
+            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"/>
         </div>
         <h4 class="small-letters">{{ formatDate(item.release_date) }}</h4>
         <div>
@@ -121,6 +119,11 @@ export default {
   place-content: center;
 }
 
+.poster-images {
+  width: 346px !important;
+  height: 519px !important;
+}
+
 .cards-item {
   display: flex;
   padding: 1rem;
@@ -173,6 +176,7 @@ export default {
 .button {
   width: 100%;
   background-color: #78e08f;
+  bottom: 0;
 }
 
 .btn-primary:hover,
