@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .outer {
   margin: 0;
-  height: 100%;
+  height: auto;
   background-color: grey;
 }
 
@@ -80,10 +80,12 @@ export default {
 
 .large-input {
   width: 80%;
+  margin: 4px 0;
 }
 
 .small-input {
   width: 40%;
+  margin: 4px 0;
 }
 
 .col2 {
@@ -96,7 +98,7 @@ export default {
 }
 
 #finish {
-  margin-top: 15px;
+  margin-top: 85px;
   height: 35px;
   width: 240px;
 }
