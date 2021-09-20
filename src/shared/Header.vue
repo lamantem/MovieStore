@@ -38,6 +38,9 @@
         @toggleCheckout="toggleChecksdso"
         @clearCheckoutList="$emit('clearCheckoutList')"
       ></ShoppingCart>
+      <span v-if="this.shoppingCart.length > 0" id="shopping-list-counter">
+        <b>{{ this.shoppingCart.length }} </b></span
+      >
     </div>
   </div>
 </template>
@@ -74,9 +77,9 @@ export default {
     toggleChecksdso() {
       this.$emit("toggleCheckout", this.shoppingCart);
     },
-    addToShoppingFromFavorite(item){
+    addToShoppingFromFavorite(item) {
       this.$emit("addToShoppingFromFavorite", item);
-    }
+    },
   },
 };
 </script>
@@ -91,6 +94,18 @@ export default {
   position: fixed;
   width: 100%;
   z-index: 200;
+}
+
+#shopping-list-counter {
+  border-radius: 12px;
+  width: 16px;
+  height: 16px;
+  background-color: #eccc68;
+  position: absolute;
+  right: 20px;
+  top: 17px;
+  font-size: 12px;
+  color: black;
 }
 
 .header > div {
