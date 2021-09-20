@@ -186,7 +186,6 @@ li {
   padding-top: 75px;
   margin: 0 8px 8px 8px;
   height: auto;
-  background-color: blueviolet;
   display: flex;
   flex-wrap: wrap;
 }
@@ -200,7 +199,6 @@ li {
 
 .col1 {
   height: auto;
-  background-color: yellow;
 }
 
 .large-input {
@@ -215,7 +213,6 @@ li {
 
 .col2 {
   height: auto;
-  background-color: greenyellow;
 }
 
 .purchase-list {
