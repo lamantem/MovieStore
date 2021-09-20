@@ -1,8 +1,8 @@
 <template>
   <div class="outer">
-    <h1 id="title">Finalizar Compra</h1>
     <div class="inner">
       <div class="col1">
+        <h1 id="title">Finalizar Compra</h1>
         <input
           class="input large-input"
           type="text"
@@ -24,14 +24,25 @@
       </div>
 
       <div class="col2">
-        <li v-for="item in shoppingCartList" :key="item.message">
-          <img
-            class="poster-images"
-            :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
-          />
-          {{ item.title }}
-          R${{ item.cost }}
+       
+        <ul>
+           <li>
+          <span class="image-header"> Imagem</span>
+          <span class="cost-header"> Preço</span>
+          <span class="quantity-header">Qtd</span>
+          <span class="title-header">Nome</span>
         </li>
+          <li v-for="item in shoppingCartList" :key="item.message">
+            <span>
+              <img
+                class="poster-images"
+                :src="'http://image.tmdb.org/t/p/w500' + item.poster_path"
+            /></span>
+            <span class="cost"> R${{ item.cost }}</span>
+            <span class="quantity">1</span>
+            <span class="quantity">{{ TextAbstract(item.title, 12) }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -49,6 +60,21 @@ export default {
     shoppingCartList: Array,
   },
   components: {},
+  methods: {
+    TextAbstract(text, length) {
+      let last;
+      if (text == null) {
+        return "";
+      }
+      if (text.length <= length) {
+        return text;
+      }
+      text = text.substring(0, length);
+      last = text.lastIndexOf(" ");
+      text = text.substring(0, last);
+      return text + "...";
+    },
+  },
 };
 </script>
 
@@ -57,7 +83,6 @@ export default {
 .outer {
   margin: 0;
   height: auto;
-  background-color: grey;
 }
 
 #title {
@@ -68,16 +93,44 @@ ul,
 li {
   list-style-type: none;
   text-align: left;
+  width: 100%;
+}
+
+.quantity {
+  margin: 20px 12px 0 0;
+  float: right;
+}
+
+.cost {
+  margin: 20px 12px 0 0;
+  float: right;
+}
+
+.image-header {
+  margin-left: -2px;
+}
+
+.cost-header,
+.quantity-header {
+  margin: 0 12px 0 0;
+  float: right;
+}
+
+.title-header {
+  margin: 0 48px 0 0;
+  float: right;
 }
 
 .poster-images {
+  margin: 0 4px;
   width: 100%;
   max-width: 44px !important;
   max-height: 66px !important;
 }
 
 .inner {
-  margin: 16px 8px 8px 8px;
+  padding-top: 75px;
+  margin: 0 8px 8px 8px;
   height: auto;
   background-color: blueviolet;
   display: flex;
@@ -93,7 +146,6 @@ li {
 
 .col1 {
   height: auto;
-  margin: 16px 0;
   background-color: yellow;
 }
 
