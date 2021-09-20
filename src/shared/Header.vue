@@ -17,7 +17,12 @@
         class="search-field"
         v-model="search"
         type="text"
-        placeholder="Pesquisar..."
+      />
+      <font-awesome-icon
+        class="logo icon-spacing search-icon"
+        :icon="['fas', 'search']"
+        transform="grow-7"
+        fixed-width
       />
     </div>
 
@@ -93,6 +98,9 @@ export default {
 #column2 {
   width: 40%;
   display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 
 #column3 {
@@ -110,6 +118,12 @@ export default {
 
 .navicon {
   float: right;
+}
+
+.search-icon {
+  position: absolute;
+  top: 21px;
+  right: 35%;
 }
 
 button {
