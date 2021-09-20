@@ -4,13 +4,12 @@
       :shoppingCart="this.shoppingCart"
       :favorites="this.favorites"
       @searchingMovies="searching()"
-      @toggleCheckout="toggleCheckoutView"
+      @toggleCheckout="checkoutView"
       @backHome="backHome"
     >
     </Header>
     <Checkout
       v-if="toggleCheckout"
-      @toggleCheckout="toggleCheckoutView"
     ></Checkout>
     <Home
       v-if="!toggleCheckout"
@@ -58,8 +57,8 @@ export default {
     searching() {
       this.search = event.target.value;
     },
-    toggleCheckoutView() {
-      this.toggleCheckout = !this.toggleCheckout;
+    checkoutView() {
+      this.toggleCheckout = true;
     },
     backHome() {
       this.toggleCheckout = false;
